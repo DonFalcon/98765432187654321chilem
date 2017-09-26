@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+         <TextView
+            android:padding="@dimen/padding_supremo"
+            android:id="@+id/tvTituloColeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_titulos"
+            android:textAlignment="center"
+            android:text="@string/titulo_coleccion"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorBlanco"
+            android:paddingBottom="@dimen/padding_top_cardview"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvColeccion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvTituloColeccion"
+            android:layout_marginBottom="20dp"
+            />
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorPrimary"
+
+            />
+
+
+</LinearLayout>
+
+

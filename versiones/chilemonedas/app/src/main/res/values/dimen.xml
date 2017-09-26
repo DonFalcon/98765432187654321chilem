@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- titulos -->
+    <dimen name="padding_supremo">16dp</dimen>
+    <dimen name="size_titulos">20dp</dimen>
+    <dimen name="padding_down_titulos">20dp</dimen>
+
+    <!-- CardViews -->
+    <dimen name="padding_top_cardview">20dp</dimen>
+
+    <!-- home -->
+    <dimen name="size_texto_home">15dp</dimen>
+    <dimen name="padding_separador_chico_home">10dp</dimen>
+    <dimen name="padding_separagor_grande_home">10dp</dimen>
+    <dimen name="texto_colecciondas_home">40dp</dimen>
+    <dimen name="padding_left_titulos_home">10dp</dimen>
+
+
+    <!-- valores default -->
+    <dimen name="padding_cardviews">10dp</dimen>
+    <dimen name="elevacion_actionbar">4dp</dimen>
+    <dimen name="margen_cardview_monedas">5dp</dimen>
+    <dimen name="corner_cardview_monedas">4dp</dimen>
+
+
+</resources>

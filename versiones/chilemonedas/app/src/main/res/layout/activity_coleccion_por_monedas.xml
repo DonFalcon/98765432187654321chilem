@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cl.fkn.chilemonedas.vista.ColeccionPorMonedaView">
+
+
+    <android.support.design.widget.AppBarLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/alColeccionPorMonedas"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbColeccionPorMonedas"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/alColeccionPorMonedas"
+        android:layout_marginTop="100dp"
+        >
+
+        <TextView
+            android:padding="@dimen/padding_supremo"
+            android:id="@+id/tvTituloColeccionPorMoneda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_titulos"
+            android:textAlignment="center"
+            android:text=""
+            android:paddingBottom="@dimen/padding_top_cardview"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:padding="@dimen/padding_supremo"
+            android:id="@+id/rvColeccionPorMoneda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvTituloColeccionPorMoneda"
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

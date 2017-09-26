@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">chile monedas</string>
+    <string name="titulo_home">Resumen</string>
+    <string name="titulo_coleccion">Colección</string>
+    <string name="ir_a_coleccion">Ver > </string>
+    <string name="home_total_monedas_coleccionadas">Total Monedas Añadidas:</string>
+    <string name="trofeos_obtenidos">Trofeos</string>
+    <string name="ultimas_monedas">Ultimas añadidas:</string>
+
+
+
+
+
+    <string name="nombre_moneda_default">Moneda</string>
+    <string name="valor_moneda_default">$ 100</string>
+    <string name="cantidad_moneda_default">23/40</string>
+    <string name="año_moneda_default">1810</string>
+
+
+</resources>

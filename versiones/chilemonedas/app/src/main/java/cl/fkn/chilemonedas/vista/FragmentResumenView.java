@@ -1,5 +1,6 @@
 package cl.fkn.chilemonedas.vista;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import cl.fkn.chilemonedas.R;
 import cl.fkn.chilemonedas.pojo.Moneda;
+import cl.fkn.chilemonedas.pojo.TipoMoneda;
 import cl.fkn.chilemonedas.presentador.FragmentResumenPresenter;
 import cl.fkn.chilemonedas.presentador.IFragmentResumenPresenter;
 
@@ -30,6 +32,7 @@ public class FragmentResumenView extends Fragment implements IFragmentResumenVie
         presenter = new FragmentResumenPresenter(this, getContext());
         cargarCantidadMonedasColeccionadas();
         cargarUltimasMonedas();
+        cargarTrofeos();
 
         return v;
     }
@@ -117,6 +120,55 @@ public class FragmentResumenView extends Fragment implements IFragmentResumenVie
 
     @Override
     public void cargarTrofeos() {
+
+        TextView tvTrofeo1 = (TextView) v.findViewById(R.id.tvResumenTrofeo1);
+        ImageView ivTrofeo1 = (ImageView) v.findViewById(R.id.ivResumenTrofeo1);
+        TextView tvTrofeo5 = (TextView) v.findViewById(R.id.tvResumenTrofeo5);
+        ImageView ivTrofeo5 = (ImageView) v.findViewById(R.id.ivResumenTrofeo5);
+        TextView tvTrofeo10 = (TextView) v.findViewById(R.id.tvResumenTrofeo10);
+        ImageView ivTrofeo10 = (ImageView) v.findViewById(R.id.ivResumenTrofeo10);
+        TextView tvTrofeo50 = (TextView) v.findViewById(R.id.tvResumenTrofeo50);
+        ImageView ivTrofeo50 = (ImageView) v.findViewById(R.id.ivResumenTrofeo50);
+        TextView tvTrofeo100 = (TextView) v.findViewById(R.id.tvResumenTrofeo100);
+        ImageView ivTrofeo100 = (ImageView) v.findViewById(R.id.ivResumenTrofeo100);
+        TextView tvTrofeo500 = (TextView) v.findViewById(R.id.tvResumenTrofeo500);
+        ImageView ivTrofeo500 = (ImageView) v.findViewById(R.id.ivResumenTrofeo500);
+
+        ArrayList <TextView> TextoTrofeos = new ArrayList<>();
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo1));
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo5));
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo10));
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo50));
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo100));
+        TextoTrofeos.add((TextView) v.findViewById(R.id.tvResumenTrofeo500));
+
+        ArrayList <ImageView> ImagenesTrofeos =new ArrayList<>();
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo1));
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo5));
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo10));
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo50));
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo100));
+        ImagenesTrofeos.add((ImageView) v.findViewById(R.id.ivResumenTrofeo500));
+
+        ArrayList<TipoMoneda> tiposMonedas = presenter.obtenerTiposMonedas();
+
+        for (int i=0;i<6;i++) {
+
+            if (tiposMonedas.get(i).getPorcentajeCompletado() > 80) {
+                ImagenesTrofeos.get(i).setImageResource(R.drawable.icons8_medalla_bronce_100);
+                TextoTrofeos.get(i).setText("$" + tiposMonedas.get(i).getDenominacion());
+
+                if (tiposMonedas.get(i).getPorcentajeCompletado() > 89) {
+                    ImagenesTrofeos.get(i).setImageResource(R.drawable.icons8_medalla_plata_100);
+
+                    if (tiposMonedas.get(i).getPorcentajeCompletado() == 100) {
+                        ImagenesTrofeos.get(i).setImageResource(R.drawable.icons8_medalla_oro_100);
+                    }
+                }
+            }
+
+
+        }
 
     }
 

@@ -33,7 +33,6 @@ public final class ConstantesBaseDatos {
     public static final String TABLE_MONEDA_CANTIDAD = "cantidad";
     public static final String TABLE_MONEDA_ID_TIPO_MONEDA = "id_tipo_moneda";
 
-
     public static final String TABLE_TROFEO = "trofeo";
     public static final String TABLE_TROFEO_ID = "id";
     public static final String TABLE_TROFEO_NOMBRE = "nombre";

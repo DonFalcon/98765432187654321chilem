@@ -58,6 +58,10 @@ public class FragmentResumenPresenter implements IFragmentResumenPresenter {
 
     }
 
+    public ArrayList<TipoMoneda> obtenerTiposMonedas(){
+        return tiposMonedas;
+    }
+
 
 
 

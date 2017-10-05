@@ -120,6 +120,7 @@ public class ConstructorMonedas {
 
                     break;
 
+
                 case 1992:
 
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_TIPO, "1");
@@ -959,10 +960,9 @@ public class ConstructorMonedas {
 
                     break;
 
-                case 1988:
+                case 1987:
 
                     break;
-
 
                 case 1990:
 
@@ -976,7 +976,7 @@ public class ConstructorMonedas {
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_cien_v1_100);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "z");
-                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default papaya");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "5");

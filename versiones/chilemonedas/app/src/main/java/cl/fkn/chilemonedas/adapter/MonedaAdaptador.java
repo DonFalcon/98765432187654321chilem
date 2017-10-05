@@ -3,6 +3,7 @@ package cl.fkn.chilemonedas.adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,7 +35,6 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
     public MonedaAdaptador(ArrayList<Moneda> monedas, Context context){
 
         this.monedas=monedas;
-        // /PAra anoimar el recicler
         this.context = context;
     }
 
@@ -48,7 +48,6 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
     public void onBindViewHolder(final MonedaAdaptador.MonedaViewHolder holder, final int position) {
 
         final Moneda moneda = monedas.get(position);
-        final int cantidad = moneda.getCantidad();
 
         if (moneda.getVersion().equals("z")) {
             holder.tvAnoCardMoneda.setText(String.valueOf(moneda.getAno()));
@@ -58,25 +57,24 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
         holder.ivCardMoneda.setImageResource(moneda.getImagen());
 
         if(moneda.getCantidad()!=0 ){
-            //holder.ivBackgroundCardMoneda.setImageResource(R.drawable.icons8_marca_de_verificaci_n_48);
 
             holder.tvCantidadCardMoneda.setText(String.valueOf(moneda.getCantidad()));
-            //Log.e("MISTERIUUUS", "id: "+moneda.getId() +"cant: "+ cantidad + "position " + position);
             holder.tvAnoCardMoneda.setBackgroundColor(Color.rgb(0,191,165));
 
         }else{
-            //Log.e("======SINSINSINS======", "id: "+moneda.getId() +"cant: "+ cantidad + "position " + position);
             holder.tvAnoCardMoneda.setBackgroundColor(Color.WHITE);
             holder.tvCantidadCardMoneda.setText("");
         }
 
-        //_============= Aqui se pone y elimina el color de coleccionado ===========================
-        //==========================================================================================
+        //_============= Aqui se pone y elimina las monedas al presionarlas ============================
+        //==============================================================================================
 
         //apretando el dibujo
         holder.ivCardMoneda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
 
                 AlertDialog.Builder dialogo = new AlertDialog.Builder(view.getContext());
 
@@ -103,11 +101,11 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
                             //moneda.setCantidad(0);
                         }else {
 
-                            constructorMonedas.sumarUnaMonedaPorID(moneda);//primero se suma una moneda
-                            if (moneda.getCantidad()+1 == 1) {
+                            constructorMonedas.sumarUnaMonedaPorID(moneda);//primero se suma una moneda al conteo de esa moneda especifica
+                            if (moneda.getCantidad() == 0) {
                                 constructorTiposMonedas.sumarMonedaConteo(moneda);//si es la primera de ese año se agrega al conteo de la coleccion
                             }
-                            constructorUsuarioMoneda.insertarMoneda(moneda);// se añade a la lista de ultima agregada
+                            constructorUsuarioMoneda.insertarMoneda(moneda);// se añade a la lista de todas las monedas agregadas
                             moneda.setColeccionada(true);
                             Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad()+1);
                         }
@@ -117,20 +115,20 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
                 });
 
                 //Boton remover ============
-                dialogo.setNegativeButton("Remover", new DialogInterface.OnClickListener() {
+                dialogo.setNegativeButton("Quitar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                         ConstructorMonedas constructorMonedas = new ConstructorMonedas(context);
                         ConstructorTiposMonedas constructorTiposMonedas = new ConstructorTiposMonedas(context);
                         ConstructorUsuarioMoneda constructorUsuarioMoneda = new ConstructorUsuarioMoneda(context);
 
-                        constructorMonedas.restarUnaMonedaPorId(moneda);//primero se resta una moneda a la bd de monedas
+                        constructorMonedas.restarUnaMonedaPorId(moneda);//primero se resta una moneda a esa moneda especifica
 
-                            if (moneda.getCantidad()-1 == 0) {
-                                constructorTiposMonedas.restarMonedaConteo(moneda);
+                            if (moneda.getCantidad() == 1) { //si solo queda una moneda
+                                constructorTiposMonedas.restarMonedaConteo(moneda); //cuando quedan cero monedas se resta del conteo de esa moneda especifica
                                 moneda.setColeccionada(false);
                             }
 
-                        constructorUsuarioMoneda.removerMoneda(moneda);
+                        constructorUsuarioMoneda.removerMoneda(moneda); //se remueve de la lista de todas las monedas agregadas
                         moneda.setCantidad(moneda.getCantidad() - 1); // se modifica la moneda "local"
 
                         Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad());
@@ -145,36 +143,30 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
                     }
                 });
                 dialogo.setIcon(moneda.getImagen());
-                //dialogo.show();
 
-                //si no hay monedas el boton remover aparece descativsado
+                //si no hay monedas el boton "remover" se descativa
+                //dialogo.show();
                 AlertDialog dialog = dialogo.show();
                 if (moneda.getCantidad()==0){
-                        Button button = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-                        button.setEnabled(false);
+                        Button buttonNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                        buttonNegative.setEnabled(false);
+
                     }
+                //el boton cancelar se pone de otro color
+
+                Button buttonNeutral = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                buttonNeutral.setTextColor(Color.rgb(75,75,75));
+
+
+
+
 
             }
         });
-        //=========================================================================================
-        //setAnimation(holder.itemView, position);
 
     }
 
-    //=========================================================================
-    //=========================================================================
 
-/*
-    public void aceptar(){
-        Toast t=Toast.makeText(context,"SIIIII", Toast.LENGTH_SHORT);
-        t.show();
-    }
-
-    public void cancelar() {
-        Toast t=Toast.makeText(context,"NOOOO", Toast.LENGTH_SHORT);
-        t.show();
-    }
-*/
 
 
     //=========================================================================
@@ -204,22 +196,5 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
         }
     }
 
-/* ================================ EN caso de querer animar el rv
 
-
- private int lastPosition = -1;
-    private Context context;
-
-    private void setAnimation(View viewToAnimate, int position)
-    {
-        // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition)
-        {
-            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-            viewToAnimate.startAnimation(animation);
-            lastPosition = position;
-        }
-    }
-
-    */
 }

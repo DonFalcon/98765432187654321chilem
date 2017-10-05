@@ -1,21 +1,17 @@
 package cl.fkn.chilemonedas.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -74,8 +70,8 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
             holder.tvCantidadCardMoneda.setText("");
         }
 
-        //_============= Aqui se pone y elimina el ticket==========================================
-        //========================================================================================
+        //_============= Aqui se pone y elimina el color de coleccionado ===========================
+        //==========================================================================================
 
         //apretando el dibujo
         holder.ivCardMoneda.setOnClickListener(new View.OnClickListener() {
@@ -92,63 +88,71 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
 
                 dialogo.setMessage(moneda.getDescripcion());
                 dialogo.setCancelable(false);
+
+                // al apretar el boton agregar
                 dialogo.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
                         ConstructorMonedas constructorMonedas = new ConstructorMonedas(context);
                         ConstructorTiposMonedas constructorTiposMonedas = new ConstructorTiposMonedas(context);
                         ConstructorUsuarioMoneda constructorUsuarioMoneda = new ConstructorUsuarioMoneda(context);
-                        if(moneda.getCantidad()==9){
-                            constructorMonedas.dejarEnCeroMonedas(moneda);
-                            constructorTiposMonedas.restarMonedaConteo(moneda);
-                            constructorUsuarioMoneda.removerMoneda(moneda);
-                            moneda.setColeccionada(false);
-                            moneda.setCantidad(0);
+                        if(moneda.getCantidad()==99){
+                            //constructorMonedas.dejarEnCeroMonedas(moneda);
+                            //constructorTiposMonedas.restarMonedaConteo(moneda);
+                            //constructorUsuarioMoneda.removerMoneda(moneda);
+                            //moneda.setColeccionada(false);
+                            //moneda.setCantidad(0);
                         }else {
 
-                            moneda.setCantidad(moneda.getCantidad() + 1);
-                            constructorMonedas.sumarMoneda(moneda);
-                            if (moneda.getCantidad() == 1) {
-                                constructorTiposMonedas.sumarMonedaConteo(moneda);
+                            constructorMonedas.sumarUnaMonedaPorID(moneda);//primero se suma una moneda
+                            if (moneda.getCantidad()+1 == 1) {
+                                constructorTiposMonedas.sumarMonedaConteo(moneda);//si es la primera de ese año se agrega al conteo de la coleccion
                             }
-                            constructorUsuarioMoneda.insertarMoneda(moneda);
+                            constructorUsuarioMoneda.insertarMoneda(moneda);// se añade a la lista de ultima agregada
                             moneda.setColeccionada(true);
-                            Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad());
+                            Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad()+1);
                         }
+                        moneda.setCantidad(moneda.getCantidad() + 1);// se modifica la moneda "local"
                         notifyItemChanged(position);
                     }
                 });
-                dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+
+                //Boton remover ============
+                dialogo.setNegativeButton("Remover", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        ConstructorMonedas constructorMonedas = new ConstructorMonedas(context);
+                        ConstructorTiposMonedas constructorTiposMonedas = new ConstructorTiposMonedas(context);
+                        ConstructorUsuarioMoneda constructorUsuarioMoneda = new ConstructorUsuarioMoneda(context);
+
+                        constructorMonedas.restarUnaMonedaPorId(moneda);//primero se resta una moneda a la bd de monedas
+
+                            if (moneda.getCantidad()-1 == 0) {
+                                constructorTiposMonedas.restarMonedaConteo(moneda);
+                                moneda.setColeccionada(false);
+                            }
+
+                        constructorUsuarioMoneda.removerMoneda(moneda);
+                        moneda.setCantidad(moneda.getCantidad() - 1); // se modifica la moneda "local"
+
+                        Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad());
+                        notifyItemChanged(position);
+                    }
+                });
+
+                //el boton de cancelar
+                dialogo.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
                     }
                 });
                 dialogo.setIcon(moneda.getImagen());
-                dialogo.show();
+                //dialogo.show();
 
-                /*
-                ConstructorMonedas constructorMonedas = new ConstructorMonedas(context);
-                ConstructorTiposMonedas constructorTiposMonedas = new ConstructorTiposMonedas(context);
-                ConstructorUsuarioMoneda constructorUsuarioMoneda = new ConstructorUsuarioMoneda(context);
-                if(moneda.getCantidad()==9){
-                    constructorMonedas.dejarEnCeroMonedas(moneda);
-                    constructorTiposMonedas.restarMonedaConteo(moneda);
-                    constructorUsuarioMoneda.removerMoneda(moneda);
-                    moneda.setColeccionada(false);
-                    moneda.setCantidad(0);
-                }else {
-
-                    moneda.setCantidad(moneda.getCantidad() + 1);
-                    constructorMonedas.sumarMoneda(moneda);
-                    if (moneda.getCantidad() == 1) {
-                        constructorTiposMonedas.sumarMonedaConteo(moneda);
+                //si no hay monedas el boton remover aparece descativsado
+                AlertDialog dialog = dialogo.show();
+                if (moneda.getCantidad()==0){
+                        Button button = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                        button.setEnabled(false);
                     }
-                    constructorUsuarioMoneda.insertarMoneda(moneda);
-                    moneda.setColeccionada(true);
-                    Log.i("MODIFICANDO CARDVIEWS", "id: " + moneda.getId() + " cantidad: " + moneda.getCantidad());
-                }
-                notifyItemChanged(position);
-
-                */
 
             }
         });

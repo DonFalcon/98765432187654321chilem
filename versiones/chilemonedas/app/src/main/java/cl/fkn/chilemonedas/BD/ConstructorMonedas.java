@@ -33,13 +33,20 @@ public class ConstructorMonedas {
         return monedas;
     }
 
-    public void sumarMoneda(Moneda moneda){
+    public void sumarUnaMonedaPorID(Moneda moneda){
 
         BaseDatos db = new BaseDatos(context);
         ContentValues contentValues = new ContentValues();
         contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, moneda.getCantidad()+1);
         db.modificarCantidadMismaMoneda(contentValues, moneda.getId());
+    }
 
+    public void restarUnaMonedaPorId(Moneda moneda){
+
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, moneda.getCantidad()-1);
+        db.modificarCantidadMismaMoneda(contentValues, moneda.getId());
     }
 
     public void dejarEnCeroMonedas(Moneda moneda){

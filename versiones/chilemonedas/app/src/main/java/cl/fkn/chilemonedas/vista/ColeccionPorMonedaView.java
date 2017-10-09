@@ -28,19 +28,20 @@ public class ColeccionPorMonedaView extends AppCompatActivity implements IColecc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coleccion_por_monedas);
 
+        //datos
+        Bundle parametros = getIntent().getExtras();
+        idTipoMoneda = parametros.getInt("id");
+        denominacion = parametros.getInt("denominacion");
+
         //ActionBar
         Toolbar miActionBar = (Toolbar) findViewById(R.id.tbColeccionPorMonedas);
         setSupportActionBar(miActionBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Bundle parametros = getIntent().getExtras();
-        idTipoMoneda = parametros.getInt("id");
-        denominacion = parametros.getInt("denominacion");
+        getSupportActionBar().setTitle(denominacion + " Peso");
 
-        editarTitulo(denominacion);
-
+        //editarTitulo(denominacion);
         listaMonedas = (RecyclerView) findViewById(R.id.rvColeccionPorMoneda);
-
         presenter = new ColeccionPorMonedaPresenter(this, getApplicationContext(), idTipoMoneda);
     }
 
@@ -52,7 +53,7 @@ public class ColeccionPorMonedaView extends AppCompatActivity implements IColecc
 
     public void editarTitulo(int denominacion){
 
-        TextView titulo = (TextView) findViewById(R.id.tvTituloColeccionPorMoneda);
+        TextView titulo = (TextView) findViewById(R.id.tvSubtituloColeccionPorMoneda);
         titulo.setText("$ "+denominacion);
 
     }

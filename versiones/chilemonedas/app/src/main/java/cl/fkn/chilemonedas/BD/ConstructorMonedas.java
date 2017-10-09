@@ -79,7 +79,7 @@ public class ConstructorMonedas {
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v1_100);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "z");
-            contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+            contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Cobre-Niquel \nCeca: Santiago \nForma: Redonda 22mm");
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");
@@ -95,7 +95,7 @@ public class ConstructorMonedas {
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v2_100);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "z");
-            contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+            contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Aluminio-Bronce \nCeca: Santiago \nForma: Redonda 22mm");
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
             contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");
@@ -128,7 +128,7 @@ public class ConstructorMonedas {
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v3_100);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "a");
-                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Aluminio-Bronce \nCeca: Santiago \nForma: Redonda 17mm");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");
@@ -144,7 +144,7 @@ public class ConstructorMonedas {
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v3_100);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "z");
-                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Aluminio-Bronce \nCeca: Santiago \nForma: Redonda 17mm");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");
@@ -165,7 +165,7 @@ public class ConstructorMonedas {
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v4_96);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "b");
-                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Aluminio \nCeca: Santiago \nForma: Octagono 15.5mm");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");
@@ -201,7 +201,7 @@ public class ConstructorMonedas {
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_IMAGEN, R.drawable.icons8_uno_v4_96);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ANO, i);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_VERSION, "z");
-                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "default");
+                    contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_DESCRIPCION, "Cara: General Bernardo O´Higgins \nMaterial: Aluminio \nCeca: Santiago \nForma: Octagono 15.5mm");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_COLECCIONADA, "false");
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_CANTIDAD, 0);
                     contentValues.put(ConstantesBaseDatos.TABLE_MONEDA_ID_TIPO_MONEDA, "1");

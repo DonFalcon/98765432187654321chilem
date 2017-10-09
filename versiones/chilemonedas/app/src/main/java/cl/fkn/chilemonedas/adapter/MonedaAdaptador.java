@@ -76,6 +76,7 @@ public class MonedaAdaptador extends RecyclerView.Adapter<MonedaAdaptador.Moneda
 
 
 
+                // AlertDialog.Builder dialogo = new AlertDialog.Builder(view.getContext(), R.style.AppTheme);
                 AlertDialog.Builder dialogo = new AlertDialog.Builder(view.getContext());
 
                 if (moneda.getVersion().equals("z")) {

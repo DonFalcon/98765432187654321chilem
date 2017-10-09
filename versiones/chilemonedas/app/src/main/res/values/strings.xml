@@ -1,20 +1,25 @@
 <resources>
+
+    <!-- Titulos y Titulos Appbar -->
     <string name="app_name">chile monedas</string>
     <string name="titulo_home">Resumen</string>
     <string name="titulo_coleccion">Colección</string>
+    <string name="titulo_coleccion_por_monedas_default">Pesos</string>
+
+    <!-- Strings Resumen -->
     <string name="ir_a_coleccion">Ver > </string>
     <string name="home_total_monedas_coleccionadas">Total Monedas Añadidas:</string>
     <string name="trofeos_obtenidos">Trofeos</string>
     <string name="ultimas_monedas">Ultimas añadidas:</string>
 
-
-
-
-
+    <!-- Strings Coleccion -->
     <string name="nombre_moneda_default">Moneda</string>
     <string name="valor_moneda_default">$ 100</string>
     <string name="cantidad_moneda_default">23/40</string>
     <string name="año_moneda_default">1810</string>
 
+    <!-- Strings Coleccion por monedas -->
+    <string name="titulo_descripcion_por_monedas_default">Pesos</string>
+    <string name="descripcion_por_monedas_default">Acuñadas desde 1975 a la fecha \nParecen pantrucas \nNicanor falcon</string>
 
 </resources>
